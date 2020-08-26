@@ -1,4 +1,4 @@
-# cosnts.py
+# settings.py
 #
 # MIT License
 #
@@ -23,3 +23,25 @@
 # SOFTWARE.
 
 OPENWEATHERMAP_KEY = 'c805b4b3cca3c0a2b6e93811355d184e'
+
+# Map OpenWeatherMap icon names to GTK+ icons names
+WEATHER_TO_ICON = {
+    '01d': 'weather-clear',
+    '01n': 'weather-clear-night',
+    '02d': 'weather-few-clouds',
+    '02n': 'weather-few-clouds-night',
+    '03d': 'weather-overcast',
+    '03n': 'weather-overcast',
+    '04d': 'weather-overcast',
+    '04n': 'weather-overcast',
+    '09d': 'weather-showers',
+    '09n': 'weather-showers',
+    '10d': 'weather-showers-scattered',
+    '10n': 'weather-showers-scattered',
+    '11d': 'weather-storm',
+    '11n': 'weather-storm',
+    '13d': 'weather-snow',
+    '13n': 'weather-snow',
+    '50d': 'weather-fog',
+    '50n': 'weather-fog',
+}

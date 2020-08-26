@@ -21,3 +21,38 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
+
+import requests
+
+
+class WeatherService:
+    """Weather API service
+    """
+
+    # Base URL of weather API
+    BASE_API = 'https://api.openweathermap.org/data/2.5'
+
+    def __init__(self, api_key):
+        self.api_key = api_key
+
+    def find_locations(self, location):
+        """Call Find method to find all locations that matches given location name
+
+        :param location:
+        :return:
+        """
+        uri = self.BASE_API + '/find'
+        params = {
+            'q': location,
+            'appid': self.api_key,
+            'lang': 'ru',
+            'units': 'metric',
+        }
+
+        # Send GET request to weather API
+        response = requests.get(uri, params, timeout=2.0)
+        response_data = response.json()
+        if response_data['cod'] == "200":
+            return response_data['list']
+        else:
+            return []
