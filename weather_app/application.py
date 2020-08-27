@@ -1,6 +1,4 @@
-#!/usr/bin/env python3
-#
-# main.py
+# application.py
 #
 # MIT License
 #
@@ -28,7 +26,7 @@ import sys
 
 import gi
 
-from window import WeatherWindow
+from .window import WeatherWindow
 
 gi.require_version('Gtk', '3.0')
 

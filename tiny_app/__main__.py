@@ -1,4 +1,6 @@
-# location.py
+#!/usr/bin/env python3
+#
+# __main__.py
 #
 # MIT License
 #
@@ -21,24 +23,8 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-from gi.repository import GObject
-
-from ..settings import WEATHER_TO_ICON
 
 
-class Location(GObject.GObject):
-    """Store Location data
-    """
-    location_id = GObject.property(type=int)
-    name = GObject.property(type=str)
-    country = GObject.property(type=str)
-    temp = GObject.property(type=float)
-    icon = GObject.property(type=str)
-
-    def __init__(self, location_id, name, country, temp, weather_icon):
-        GObject.GObject.__init__(self)
-        self.location_id = location_id
-        self.name = name
-        self.country = country
-        self.temp = temp
-        self.icon = WEATHER_TO_ICON.get(weather_icon, 'weather-severe-alert')
+from .application import main
+    
+main()

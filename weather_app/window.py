@@ -24,10 +24,10 @@
 
 import gi
 
-from models.location import Location
-from services.weather import WeatherService
-from settings import OPENWEATHERMAP_KEY
-from widgets.location_row import LocationRow
+from .models.location import Location
+from .services.weather import WeatherService
+from .settings import OPENWEATHERMAP_KEY
+from .widgets.location_row import LocationRow
 
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk, Gio

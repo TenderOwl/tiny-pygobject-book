@@ -1,4 +1,4 @@
-# Weather app for Tiny PyGObject book
+# Tiny app for Tiny PyGObject book
 
 <div align="center">
   <img class="center" src="screenshot.png" />
@@ -7,5 +7,4 @@
 ## Requirements
 
 - python 3.6+
-- requests package
 - pygobject

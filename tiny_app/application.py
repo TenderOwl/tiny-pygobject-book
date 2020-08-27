@@ -1,4 +1,4 @@
-# location_row.py
+# applications.py
 #
 # MIT License
 #
@@ -22,40 +22,31 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+import sys
 import gi
 
-from ..models.location import Location
-
 gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
+
+from gi.repository import Gtk, Gio
+
+class Application(Gtk.Application):
+    def __init__(self):
+        super().__init__(application_id='com.github.tenderowl.tiny-app',
+                         flags=Gio.ApplicationFlags.FLAGS_NONE)
+
+    def do_activate(self):
+        win = self.props.active_window
+        if not win:
+            win = Gtk.ApplicationWindow(application=self)
+            win.set_default_size(400, 300)
+            win.set_title('Tiny App')
+
+            label = Gtk.Label(label='Welcome to PyGObject!', visible=True)
+            win.add(label)
+        win.present()
 
 
-class LocationRow(Gtk.ListBoxRow):
-    """Widget to display weather data for given `location`
-    """
-    def __init__(self, location: Location):
-        super().__init__()
+def main():
+    app = Application()
+    return app.run(sys.argv)
 
-        # Create layout box
-        box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL,
-                      spacing=6,
-                      margin=6)
-
-        # Construct labels
-        name_label = Gtk.Label(label=location.name)
-        country_label = Gtk.Label(label=location.country)
-        temp_label = Gtk.Label(label=f'{location.temp:.0f} \u00B0C')
-        weather_icon = Gtk.Image(
-            icon_name=location.icon,
-            icon_size=Gtk.IconSize.LARGE_TOOLBAR,
-            tooltip_text=location.icon,
-        )
-
-        # Add labels to the layout
-        box.pack_start(name_label, False, True, 0)
-        box.pack_start(country_label, False, False, 0)
-        box.pack_end(temp_label, False, False, 0)
-        box.pack_end(weather_icon, False, False, 0)
-        box.show_all()
-
-        self.add(box)
